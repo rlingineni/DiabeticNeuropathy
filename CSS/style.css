@@ -1,0 +1,64 @@
+/* line 1, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: play; }
+
+/* line 9, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+.content {
+  width: 70%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20px;
+  padding: 5%;
+  background-color: #4bb4ff; }
+  /* line 17, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+  .content .imageHolder {
+    width: 90%;
+    padding: 5%;
+    display: inline-block;
+    background-color: #e8e8e8;
+    margin-bottom: 10px; }
+    /* line 23, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .imageHolder .leftSandal {
+      width: 40%;
+      float: left;
+      margin-left: 5%;
+      margin-right: 5%; }
+    /* line 38, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .imageHolder .rightSandal {
+      width: 40%;
+      float: left;
+      margin-left: 5%;
+      margin-right: 5%; }
+  /* line 56, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+  .content .infoHolder .footInfo {
+    width: 90%;
+    padding: 5%;
+    background-color: white;
+    display: inline-block;
+    text-align: center; }
+    /* line 62, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .footInfo .leftInfo {
+      width: 50%;
+      float: left; }
+    /* line 72, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .footInfo .rightInfo {
+      width: 50%;
+      float: left; }
+    /* line 84, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .footInfo .info .footTitle {
+      font-size: 20px; }
+    /* line 87, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .footInfo .info .footContent {
+      font-size: 18px; }
+  /* line 93, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+  .content .infoHolder .alertInfo {
+    background-color: white;
+    width: 90%;
+    display: inline-block;
+    padding: 5%; }
+
+/*# sourceMappingURL=style.css.map */

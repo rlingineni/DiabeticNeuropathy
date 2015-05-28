@@ -1,0 +1,110 @@
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: play;
+}
+
+.content{
+	width: 70%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
+	padding: 5%;
+	background-color: rgb(75, 180, 255);
+
+	.imageHolder{
+		width: 90%;
+		padding: 5%;
+		display: inline-block;
+		background-color: rgb(232, 232, 232);
+		margin-bottom: 10px;
+		.leftSandal{
+			width: 40%;
+			float: left;
+			margin-left: 5%;
+			margin-right: 5%;
+			.outsideShoe{
+
+			}
+			.insideShoe{
+
+			}
+			.strap{
+
+			}
+		}
+		.rightSandal{
+			width: 40%;
+			float: left;
+			margin-left: 5%;
+			margin-right: 5%;
+			.outsideShoe{
+
+			}
+			.insideShoe{
+
+			}
+			.strap{
+
+			}
+		}
+	}
+
+	.infoHolder{
+		.footInfo{
+			width: 90%;
+			padding: 5%;
+			background-color: white;
+			display: inline-block;
+			text-align: center;
+			.leftInfo{
+				width: 50%;
+				float: left;
+				.leftTitle{
+
+				}
+				.leftContent{
+
+				}
+			}
+			.rightInfo{
+				width: 50%;
+				float: left;
+				.rightTitle{
+
+				}
+				.rightContent{
+
+				}
+			}
+
+			.info{
+				.footTitle{
+					font-size: 20px;
+				}
+				.footContent{
+					font-size: 18px;
+				}
+			}
+		}
+
+		.alertInfo{
+			background-color: white;
+			width: 90%;
+			display: inline-block;
+			padding: 5%;
+			.button{
+				.actualButton{
+
+				}
+			}
+			.alertStatus{
+
+			}
+		}
+	}
+
+
+}
