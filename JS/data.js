@@ -1,7 +1,7 @@
 function fetchData(){
 	fetchLeft();
 	fetchRight();
-	writeData();
+	dataDisplay();
 }
 
 function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrLeft?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
@@ -82,7 +82,7 @@ function colorScale(svgBaseClass, data, max){
 
 }
 
-setInterval(fetchData, 500);
+setInterval(fetchData, 800);
 
 
 
