@@ -33,49 +33,71 @@ body {
       float: left;
       margin-left: 5%;
       margin-right: 5%; }
-  /* line 56, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 54, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .imageHolder .balanceScale {
+      width: 70%;
+      margin-left: 15%;
+      margin-right: 15%;
+      float: left;
+      margin-top: 5%;
+      height: 25px;
+      background-color: #919191;
+      border-radius: .7em; }
+      /* line 64, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      .content .imageHolder .balanceScale .meter {
+        height: 35px;
+        width: 35px;
+        border-radius: 1em;
+        background-color: #0080ff;
+        position: relative;
+        top: -5px; }
+      /* line 76, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      .content .imageHolder .balanceScale .center {
+        display: none;
+        margin-left: 49.5%;
+        margin-right: 49.5%;
+        width: 1%;
+        height: 100%;
+        position: relative;
+        top: -35px;
+        background-color: #175581; }
+  /* line 90, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .footInfo {
     width: 90%;
     padding: 5%;
     background-color: white;
     display: inline-block;
     text-align: center; }
-    /* line 62, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 96, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .leftInfo {
       width: 50%;
       float: left; }
-    /* line 72, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 106, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .rightInfo {
       width: 50%;
       float: left; }
-    /* line 84, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 118, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .info .footTitle {
       font-size: 3vw; }
-    /* line 87, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 121, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .info .footContent {
       font-size: 4vw; }
-    /* line 92, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
-    .content .infoHolder .footInfo .balanceScale {
-      width: 70%;
-      margin-left: 15%;
-      margin-right: 15%;
-      border: 2px solid black; }
-  /* line 104, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+  /* line 127, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .alertInfo {
     background-color: #e4fdee;
     width: 90%;
     display: inline-block;
     padding: 5%; }
-    /* line 109, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 132, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .alertInfo .button {
       width: 25%;
       float: left;
       margin-left: 5%;
       margin-right: 5%; }
-      /* line 114, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      /* line 137, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .alertInfo .button .actualButton {
         fill: #64c864; }
-    /* line 118, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 141, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .alertInfo .alertStatus {
       width: 60%;
       float: left;

@@ -50,7 +50,24 @@ function dataDisplay(){
 		colorScale(".rightSandal", dataR, 200);
 	}
 
-	balanceScale(dataL, dataR);
+	if (dataL != "undefined" && dataR != "undefined"){
+		balanceScale(dataL, dataR);
+	}
+}
+
+function balanceScale(){
+	center = (($(".meter").parent().width() - $(".meter").width()) / 2);
+	if ((dataR - dataL) < 0){
+		balancePosition = 0 + center;
+	}
+	else if ((dataR - dataL) > 200){
+		balancePosition = 1 + center;
+	}
+	else{
+		balancePosition = (dataR - dataL)/200 * center + center;
+	}
+
+	$(".meter").css("margin-left", balancePosition + "px");
 }
 
 function colorScale(svgBaseClass, data, max){
@@ -87,7 +104,9 @@ function colorScale(svgBaseClass, data, max){
 	$(outsidePath).css("fill", "rgba(" + redOutside + "," + greenOutside + "," + blue + "," + opacity + ")");
 	$(insidePath).css("fill", "rgba(" + red + "," + green + "," + blue + "," + opacity + ")");
 	$(strapPath).css("fill", "rgba(" + redStrap + "," + greenStrap + "," + blue + "," + opacity + ")");
-
+	$(outsidePath).css("stroke-width", "0px");
+	$(insidePath).css("stroke-width", "0px");
+	$(strapPath).css("stroke-width", "0px");
 }
 
 setInterval(fetchData, 800);

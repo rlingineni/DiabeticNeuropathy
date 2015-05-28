@@ -50,6 +50,40 @@ body{
 
 			}
 		}
+
+		.balanceScale{
+			width: 70%;
+			margin-left: 15%;
+			margin-right: 15%;
+			float: left;
+			margin-top: 5%;
+			height: 25px;
+			background-color: rgb(145, 145, 145);
+			border-radius: .7em;
+
+			.meter{
+				height: 35px;
+				width: 35px;
+				border-radius: 1em;
+				background-color: rgba(0, 128, 255, 1);
+				//margin-left: 45%;
+				// done in javascript
+				//margin-right: 50%;
+				position: relative;
+				top: -5px;
+			}
+
+			.center{
+				display: none;
+				margin-left: 49.5%;
+				margin-right: 49.5%;
+				width: 1%;
+				height: 100%;
+				position: relative;
+				top: -35px;
+				background-color: #175581;
+			}
+		}
 	}
 
 	.infoHolder{
@@ -86,17 +120,6 @@ body{
 				}
 				.footContent{
 					font-size: 4vw;
-				}
-			}
-
-			.balanceScale{
-				width: 70%;
-				margin-left: 15%;
-				margin-right: 15%;
-				border: 2px solid black;
-
-				.meter{
-
 				}
 			}
 		}
