@@ -6,13 +6,13 @@ function fetchData(){
 
 function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrLeft?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
-		window.dataL = data.result
+		window.dataL = data.result;
 	});
 }
 
 function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
-		window.dataR = data.result
+		window.dataR = data.result;
 	});
 }
 
@@ -24,11 +24,13 @@ function writeData(data){
 }
 
 function dataDisplay(){
-	alert = window.alert
+
+	window.alertStatus = false;
+	alertStatus = window.alertStatus;
 	dataL = window.dataL;
 	dataR = window.dataR;
 
-	if (alert === true){
+	if (alertStatus === true){
 		$(".alertStatus").css("background-color", "rgb(253, 228, 238)");
 		$(".actualButton").css("fill", "rgb(200, 100, 100)");
 	}
@@ -40,18 +42,20 @@ function dataDisplay(){
 
 	if (dataL != "undefined"){
 		$(".leftContent").text(dataL);
-		colorScale(.leftSandal, dataL, 200);
+		colorScale(".leftSandal", dataL, 200);
 	}
 
 	if (dataR != "undefined"){
 		$(".rightContent").text(dataR);
-		colorScale(.rightSandal, dataR, 200);
+		colorScale(".rightSandal", dataR, 200);
 	}
+
+	balanceScale(dataL, dataR);
 }
 
 function colorScale(svgBaseClass, data, max){
-	red = (255 * n) / 100;
-	green = (255 * (100 - n)) / 100;
+	red = (255 * data) / 100;
+	green = (255 * (100 - data)) / 100;
 	blue = 0;
 	if ((data / max) > 1){
 		opacity = 1;
@@ -64,8 +68,8 @@ function colorScale(svgBaseClass, data, max){
 	}
 
 	redStrap = red * 1.05;
-	redOutside = red * .95;
-	greenStrap = green * .95;
+	redOutside = red * 0.95;
+	greenStrap = green * 0.95;
 	greenOutside = green * 1.05;
 
 	if (green * 1.05 > 255){
@@ -76,13 +80,16 @@ function colorScale(svgBaseClass, data, max){
 		redStrap = 255;
 	}
 
-	$(svgBaseClass " .outsideShoe").css("fill", "rgba(" + redOutside + "," + greenOutside + "," + blue + "," + opacity + ")");
-	$(svgBaseClass " .insideShoe").css("fill", "rgba(" + red + "," + green + "," + blue + "," + opacity + ")");
-	$(svgBaseClass " .strap").css("fill", "rgba(" + redStrap + "," + greenStrap + "," + blue + "," + opacity + ")");
+  outsidePath = svgBaseClass + " .outsideShoe";
+  insidePath = svgBaseClass + " .insideShoe";
+  strapPath = svgBaseClass + " .strap";
+
+	$(outsidePath).css("fill", "rgba(" + redOutside + "," + greenOutside + "," + blue + "," + opacity + ")");
+	$(insidePath).css("fill", "rgba(" + red + "," + green + "," + blue + "," + opacity + ")");
+	$(strapPath).css("fill", "rgba(" + redStrap + "," + greenStrap + "," + blue + "," + opacity + ")");
 
 }
 
 setInterval(fetchData, 800);
-
 
 
