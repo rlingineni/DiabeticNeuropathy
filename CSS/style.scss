@@ -82,26 +82,33 @@ body{
 
 			.info{
 				.footTitle{
-					font-size: 20px;
+					font-size: 3vw;
 				}
 				.footContent{
-					font-size: 18px;
+					font-size: 4vw;
 				}
 			}
 		}
 
 		.alertInfo{
-			background-color: white;
+			background-color: rgb(228, 253, 238);
 			width: 90%;
 			display: inline-block;
 			padding: 5%;
 			.button{
+				width: 25%;
+				float: left;
+				margin-left: 5%;
+				margin-right: 5%;
 				.actualButton{
-
+					fill: rgb(100, 200, 100);
 				}
 			}
 			.alertStatus{
-
+				width: 60%;
+				float: left;
+				font-size: 8vw;
+				text-align: center;
 			}
 		}
 	}

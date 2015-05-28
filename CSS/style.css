@@ -50,15 +50,30 @@ body {
       float: left; }
     /* line 84, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .info .footTitle {
-      font-size: 20px; }
+      font-size: 3vw; }
     /* line 87, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .info .footContent {
-      font-size: 18px; }
+      font-size: 4vw; }
   /* line 93, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .alertInfo {
-    background-color: white;
+    background-color: #e4fdee;
     width: 90%;
     display: inline-block;
     padding: 5%; }
+    /* line 98, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .alertInfo .button {
+      width: 25%;
+      float: left;
+      margin-left: 5%;
+      margin-right: 5%; }
+      /* line 103, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      .content .infoHolder .alertInfo .button .actualButton {
+        fill: #64c864; }
+    /* line 107, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    .content .infoHolder .alertInfo .alertStatus {
+      width: 60%;
+      float: left;
+      font-size: 8vw;
+      text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
