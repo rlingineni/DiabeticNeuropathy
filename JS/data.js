@@ -5,24 +5,40 @@ window.dataRF = "Loading";
 window.dataRB = "Loading";
 window.dataR = "Loading";
 
+window.allDataLF = {};
+window.allDataLB = {};
+window.allDataRF = {};
+window.allDataLB = {};
+
+window.allDataLFCount = 0;
+window.allDataLBCount = 0;
+window.allDataRFCount = 0;
+window.allDataRBCount = 0;
+
+window.dataLFAvg = 0;
+window.dataLBAvg = 0;
+window.dataRFAvg = 0;
+window.dataRBAvg = 0;
+
+
 function fetchData(){
 	fetchLeft();
 	fetchRight();
 	dataDisplay();
 }
 
-function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrLeft?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
 		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
-			window.dataLF = data.result;
+			window.dataLF = parseInt(data.result);
 		}
 	});
 }
 
-function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
 		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
-			window.dataLB = data.result;
+			window.dataLB = parseInt(data.result);
 		}
 	});
 }
@@ -60,20 +76,48 @@ function dataDisplay(){
 		colorScale(".leftSandal", dataLF, dataLB, 150);
 	}
 
+	if (dataLF != "Loading"){
+		allDataLFCount = allDataLFCount + 1;
+		allDataLF[allDataLFCount] = dataLF;
+		for (var i = 1; i < allDataLFCount; i++){
+			dataLFAvg = dataLFAvg + allDataLF[i];
+		}
+		dataLFAvg = dataLFAvg / allDataLFCount;
+
+		//put converting function here
+	}
+
+	if (dataLB != "Loading"){
+		allDataLBCount = allDataLBCount + 1;
+		allDataLB[allDataLBCount] = dataLB;
+		for (var i = 1; i < allDataLBCount; i++){
+			dataLBAvg = dataLBAvg + allDataLB[i];
+		}
+		dataLBAvg = dataLBAvg / allDataLBCount;
+
+		//put converting function here
+	}
+
+	$(".averageContent").html("LF: " + parseFloat(parseFloat(dataLFAvg).toFixed(1)) + ", LB: " + parseFloat(parseFloat(dataLBAvg).toFixed(1)) + "<br>" + "RF: N/A, RB: N/A");
+
 	load();
 }
 
 function checkAlertStatus(){
 
-	if (dataLF > 0.4 * dataLB /*|| dataLF + 15 > dataLB*/){
+	if (dataLF > 0.7 * dataLB /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
 		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
-		$( "#book" ).animate({
-			width: [ "toggle", "swing" ],
-			height: [ "toggle", "swing" ],
-			opacity: "toggle"
-		}, 5000, "linear");
+		$(".actualButton").animate({
+				backgroundColor: "rgb(255, 155, 155)"
+			}, 200, "linear", function() {
+				$(".actualButton").animate({
+						backgroundColor: "rgb(255, 0, 0)"
+					}, 200, "linear"
+				);
+			}
+		);
 	}
 
 	else{
