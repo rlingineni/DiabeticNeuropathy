@@ -60,14 +60,14 @@ function dataDisplay(){
 	//dataRB = window.dataRB;
 
 	if (dataLF != "Loading"){
-		$(".leftContent").text("Front: " + dataLF + "lbs, " + $(".leftContent").text().split(", ")[1]);
+		$(".leftContent").html("Front: " + dataLF * 1940 + "Pa, " + "<br>" + $(".leftContent").text().split(", ")[1]);
 	}
 
 	if (dataLB != "Loading"){
-		$(".leftContent").text($(".leftContent").text().split(", ")[0] + ", " + "Back: " + dataLB + "lbs");
+		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + dataLB * 1940 + "Pa");
 	}
 
-	if (dataLF != "Loading" && dataLB != "Loading" && dataRF != "Loading" && dataRB != "Loading"){
+	if ((dataLF != "Loading" && dataLB != "Loading") || (dataRF != "Loading" && dataRB != "Loading")){
 		bottomBalanceScale(dataLF + dataLB, dataRF + dataRB);
 		checkAlertStatus();
 	}
@@ -82,7 +82,7 @@ function dataDisplay(){
 		for (var i = 1; i < allDataLFCount; i++){
 			dataLFAvg = dataLFAvg + allDataLF[i];
 		}
-		dataLFAvg = dataLFAvg / allDataLFCount;
+		dataLFAvg = dataLFAvg / allDataLFCount * 1940;
 
 		//put converting function here
 	}
@@ -93,19 +93,19 @@ function dataDisplay(){
 		for (var i = 1; i < allDataLBCount; i++){
 			dataLBAvg = dataLBAvg + allDataLB[i];
 		}
-		dataLBAvg = dataLBAvg / allDataLBCount;
+		dataLBAvg = dataLBAvg / allDataLBCount * 1940;
 
 		//put converting function here
 	}
 
-	$(".averageContent").html("LF: " + parseFloat(parseFloat(dataLFAvg).toFixed(1)) + ", LB: " + parseFloat(parseFloat(dataLBAvg).toFixed(1)) + "<br>" + "RF: N/A, RB: N/A");
+	$(".averageContent").html("L Front: " + parseFloat(parseFloat(dataLFAvg).toFixed(1)) + "Pa" + "<br>" + "L Back: " + parseFloat(parseFloat(dataLBAvg).toFixed(1)) + "Pa" );
 
 	load();
 }
 
 function checkAlertStatus(){
 
-	if (dataLF > 0.7 * dataLB /*|| dataLF + 15 > dataLB*/){
+	if (dataLF > dataLB - 15 && dataLB > 15 /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
 		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
@@ -131,14 +131,20 @@ function checkAlertStatus(){
 
 function bottomBalanceScale(dataL, dataR){
 	center = (($(".meter").parent().width() - $(".meter").width()) / 2);
-	if ((dataR - dataL) < 0){
-		balancePosition = 0 + center;
+	if (dataL == "Loading"){
+		dataL = 0;
 	}
-	else if ((dataR - dataL) > 200){
-		balancePosition = 1 + center;
+	if (dataR == "Loading"){
+		dataR = 0;
+	}
+	if ((dataR - dataL) < -150){
+		balancePosition = 0 * center;
+	}
+	else if ((dataR - dataL) > 150){
+		balancePosition = 2 * center;
 	}
 	else{
-		balancePosition = (dataR - dataL)/200 * center + center;
+		balancePosition = (dataR - dataL)/150 * center + center;
 	}
 
 
@@ -207,6 +213,6 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 	$(backPath).css("stroke-width", "0px");
 }
 
-setInterval(fetchData, 800);
+//setInterval(fetchData, 800);
 
 
