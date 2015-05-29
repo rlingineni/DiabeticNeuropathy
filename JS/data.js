@@ -43,6 +43,11 @@ function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff710
 	});
 }
 
+function pageScroll() {
+    window.scrollBy(0,1);
+    scrolldelay = setTimeout(pageScroll(),10);
+}
+
 function writeData(data){
 	dataL = window.dataL;
 	dataR = window.dataR;
