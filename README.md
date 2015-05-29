@@ -12,6 +12,10 @@ As an example, the system is setup to warn the patient when they place too much 
 
 The system also shows the patient the amount of pressure they are putting on each position in their foot (in Pascals), along with a graphical representation of the current pressure (transparent green to opaque red). It also shows the average pressure, for the patient to monitor themselves. The webpage also graphically shows the difference in pressure between the two feet.
 
+___
+
+Caution! A few values in the source code are calibrated specifically for these sensors, which are home-made. These will most likely have to be changed for use with other sensors.
+
 ---
 
 ##Pictures, Diagrams:

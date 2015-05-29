@@ -32,7 +32,7 @@ body{
 		padding: 5%;
 		display: inline-block;
 		background-color: rgb(232, 232, 232);
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		.leftSandal{
 			width: 35%;
 			float: left;
@@ -117,7 +117,7 @@ body{
 		}
 
 		.footInfo{
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 			@media screen and (min-device-width: 1200px) {
 				margin-top: 0px;
 				border-top-right-radius: 30px;
@@ -140,7 +140,7 @@ body{
 				}
 				float: left;
 				.footTitle{
-					font-size: 8vw;
+					font-size: 6vw;
 					@media screen and (min-device-width: 1200px){
 						font-size: 3vw;
 					}

@@ -60,11 +60,11 @@ function dataDisplay(){
 	//dataRB = window.dataRB;
 
 	if (dataLF != "Loading"){
-		$(".leftContent").html("Front: " + dataLF * 1940 + "Pa, " + "<br>" + $(".leftContent").text().split(", ")[1]);
+		$(".leftContent").html("Front: " + dataLF * 1940 + " Pa, " + "<br>" + $(".leftContent").text().split(", ")[1]);
 	}
 
 	if (dataLB != "Loading"){
-		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + dataLB * 1940 + "Pa");
+		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + dataLB * 1940 + " Pa");
 	}
 
 	if ((dataLF != "Loading" && dataLB != "Loading") || (dataRF != "Loading" && dataRB != "Loading")){
@@ -82,7 +82,7 @@ function dataDisplay(){
 		for (var i = 1; i < allDataLFCount; i++){
 			dataLFAvg = dataLFAvg + allDataLF[i];
 		}
-		dataLFAvg = dataLFAvg / allDataLFCount * 1940;
+		dataLFAvg = dataLFAvg / allDataLFCount;
 
 		//put converting function here
 	}
@@ -93,12 +93,12 @@ function dataDisplay(){
 		for (var i = 1; i < allDataLBCount; i++){
 			dataLBAvg = dataLBAvg + allDataLB[i];
 		}
-		dataLBAvg = dataLBAvg / allDataLBCount * 1940;
+		dataLBAvg = dataLBAvg / allDataLBCount;
 
 		//put converting function here
 	}
 
-	$(".averageContent").html("L Front: " + parseFloat(parseFloat(dataLFAvg).toFixed(1)) + "Pa" + "<br>" + "L Back: " + parseFloat(parseFloat(dataLBAvg).toFixed(1)) + "Pa" );
+	$(".averageContent").html("L Front: " + parseInt((dataLFAvg * 1940/*).toExponential(2*/)) + " Pa" + "<br>" + "L Back: " + parseInt((dataLBAvg * 1940/*).toExponential(2*/)) + " Pa" );
 
 	load();
 }
@@ -175,7 +175,7 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 		opacityF = 0.5;
 	}
 	else{
-		opacityF = 0.5 + 0.5 * (dataF / max);
+		opacityF = 0.05 + 0.95 * (dataF / max);
 	}
 
 	if ((dataB / max) > 1){
@@ -185,7 +185,7 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 		opacityB = 0.5;
 	}
 	else{
-		opacityB = 0.5 + 0.5 * (dataB / max);
+		opacityB = 0.05 + 0.95 * (dataB / max);
 	}
 
 
@@ -213,6 +213,6 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 	$(backPath).css("stroke-width", "0px");
 }
 
-//setInterval(fetchData, 800);
+setInterval(fetchData, 800);
 
 

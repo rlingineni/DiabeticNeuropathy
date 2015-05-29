@@ -25,7 +25,7 @@ body {
     padding: 5%;
     display: inline-block;
     background-color: #e8e8e8;
-    margin-bottom: 30px; }
+    margin-bottom: 20px; }
     @media screen and (min-device-width: 1200px) {
       .content .imageHolder {
         border-top-left-radius: 30px;
@@ -91,7 +91,7 @@ body {
       border-bottom-right-radius: 30px; } }
   /* line 119, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .footInfo {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     width: 90%;
     padding: 5%;
     background-color: white;
@@ -116,7 +116,7 @@ body {
           background-color: transparent; } }
       /* line 142, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .footInfo .info .footTitle {
-        font-size: 8vw; }
+        font-size: 6vw; }
         @media screen and (min-device-width: 1200px) {
           .content .infoHolder .footInfo .info .footTitle {
             font-size: 3vw; } }
