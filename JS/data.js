@@ -25,20 +25,8 @@ function writeData(data){
 
 function dataDisplay(){
 
-	window.alertStatus = false;
-	alertStatus = window.alertStatus;
 	dataL = window.dataL;
 	dataR = window.dataR;
-
-	if (alertStatus === true){
-		$(".alertStatus").css("background-color", "rgb(253, 228, 238)");
-		$(".actualButton").css("background-color", "rgb(200, 100, 100)");
-	}
-
-	else{
-		$(".alertStatus").css("background-color", "rgb(228, 253, 238)");
-		$(".actualButton").css("background-color", "rgb(100, 200, 100)");
-	}
 
 	if (dataL != "undefined"){
 		$(".leftContent").text(dataL);
@@ -52,7 +40,24 @@ function dataDisplay(){
 
 	if (dataL != "undefined" && dataR != "undefined"){
 		balanceScale(dataL, dataR);
+		checkAlertStatus();
 	}
+}
+
+function checkAlertStatus(){
+
+	if (dataL + 15 < dataR || dataR + 15 < dataL){
+		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
+		$(".alertStatus").text("Alert!");
+		$(".actualButton").css("background-color", "rgb(200, 100, 100)");
+	}
+
+	else{
+		$(".alertInfo").css("background-color", "rgb(228, 253, 238)");
+		$(".alertStatus").text("No Alert");
+		$(".actualButton").css("background-color", "rgb(100, 200, 100)");
+	}
+
 }
 
 function balanceScale(){
@@ -67,12 +72,13 @@ function balanceScale(){
 		balancePosition = (dataR - dataL)/200 * center + center;
 	}
 
+
 	$(".meter").css("margin-left", balancePosition + "px");
 }
 
 function colorScale(svgBaseClass, data, max){
 	red = (255 * data) / 100;
-	green = (255 * (100 - data)) / 100;
+	green = (200 * (100 - data)) / 100;
 	blue = 0;
 
 	red = parseInt(red);
