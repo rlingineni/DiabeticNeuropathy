@@ -32,12 +32,12 @@ function dataDisplay(){
 
 	if (alertStatus === true){
 		$(".alertStatus").css("background-color", "rgb(253, 228, 238)");
-		$(".actualButton").css("fill", "rgb(200, 100, 100)");
+		$(".actualButton").css("background-color", "rgb(200, 100, 100)");
 	}
 
 	else{
 		$(".alertStatus").css("background-color", "rgb(228, 253, 238)");
-		$(".actualButton").css("fill", "rgb(100, 200, 100)");
+		$(".actualButton").css("background-color", "rgb(100, 200, 100)");
 	}
 
 	if (dataL != "undefined"){
@@ -74,15 +74,22 @@ function colorScale(svgBaseClass, data, max){
 	red = (255 * data) / 100;
 	green = (255 * (100 - data)) / 100;
 	blue = 0;
+
+	red = parseInt(red);
+	green = parseInt(green);
+	blue = parseInt(blue);
+
 	if ((data / max) > 1){
 		opacity = 1;
 	}
 	else if((data / max) < 0){
-		opacity = 0;
+		opacity = 0.5;
 	}
 	else{
-		opacity = data / max;
+		opacity = 0.5 + 0.5 * (data / max);
 	}
+
+	//console.log(opacity);
 
 	redStrap = red * 1.05;
 	redOutside = red * 0.95;
@@ -97,9 +104,16 @@ function colorScale(svgBaseClass, data, max){
 		redStrap = 255;
 	}
 
-  outsidePath = svgBaseClass + " .outsideShoe";
-  insidePath = svgBaseClass + " .insideShoe";
-  strapPath = svgBaseClass + " .strap";
+	redStrap = parseInt(redStrap);
+	redOutside = parseInt(redOutside);
+	greenStrap = parseInt(greenStrap);
+	greenOutside = parseInt(greenOutside);
+
+	//console.log(red + "," + green + "," + blue);
+
+	outsidePath = svgBaseClass + " .outsideShoe";
+	insidePath = svgBaseClass + " .insideShoe";
+	strapPath = svgBaseClass + " .strap";
 
 	$(outsidePath).css("fill", "rgba(" + redOutside + "," + greenOutside + "," + blue + "," + opacity + ")");
 	$(insidePath).css("fill", "rgba(" + red + "," + green + "," + blue + "," + opacity + ")");
