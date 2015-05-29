@@ -129,6 +129,6 @@ function colorScale(svgBaseClass, data, max){
 	$(strapPath).css("stroke-width", "0px");
 }
 
-setInterval(fetchData, 800);
+//setInterval(fetchData, 800);
 
 

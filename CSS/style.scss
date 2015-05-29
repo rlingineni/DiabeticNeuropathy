@@ -34,9 +34,9 @@ body{
 		background-color: rgb(232, 232, 232);
 		margin-bottom: 30px;
 		.leftSandal{
-			width: 40%;
+			width: 35%;
 			float: left;
-			margin-left: 5%;
+			margin-left: 10%;
 			margin-right: 5%;
 			.outsideShoe{
 
@@ -49,10 +49,10 @@ body{
 			}
 		}
 		.rightSandal{
-			width: 40%;
+			width: 35%;
 			float: left;
 			margin-left: 5%;
-			margin-right: 5%;
+			margin-right: 10%;
 			.outsideShoe{
 
 			}
@@ -115,17 +115,45 @@ body{
 			border-top-right-radius: 30px;
 			border-bottom-right-radius: 30px;
 		}
+
 		.footInfo{
 			margin-bottom: 30px;
 			@media screen and (min-device-width: 1200px) {
 				margin-top: 0px;
 				border-top-right-radius: 30px;
+				margin-bottom: 0px;
 			}
 			width: 90%;
 			padding: 5%;
 			background-color: white;
 			display: inline-block;
 			text-align: center;
+			.info{
+				background-color: rgb(240, 240, 240);
+				border-radius: 50px;
+				width: 100%;
+				margin-top: 15px;
+				@media screen and (min-device-width: 1200px) {
+					margin-top: 0px;
+					width: 50%;
+					background-color: rgba(0,0,0,0);
+				}
+				float: left;
+				.footTitle{
+					font-size: 8vw;
+					@media screen and (min-device-width: 1200px){
+						font-size: 3vw;
+					}
+				}
+				.footContent{
+					color: gray;
+					font-size: 7vw;
+					@media screen and (min-device-width: 1200px){
+						font-size: 2.5vw;
+					}
+				}
+			}
+
 			.leftInfo{
 				.leftTitle{
 
@@ -142,27 +170,16 @@ body{
 
 				}
 			}
-
-			.info{
-				width: 100%;
-				margin-top: 30px;
+			.averageInfo{
 				@media screen and (min-device-width: 1200px) {
-					margin-top: 0px;
-					width: 50%;
+					margin-top: 10px;
+					width: 100%;
 				}
-				float: left;
-				.footTitle{
-					font-size: 8vw;
-					@media screen and (min-device-width: 1200px){
-						font-size: 3vw;
-					}
+				.averageTitle{
+
 				}
-				.footContent{
-					color: gray;
-					font-size: 9vw;
-					@media screen and (min-device-width: 1200px){
-						font-size: 4vw;
-					}
+				.averageContent{
+
 				}
 			}
 		}

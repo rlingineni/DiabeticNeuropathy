@@ -36,16 +36,16 @@ body {
         float: left; } }
     /* line 36, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .imageHolder .leftSandal {
-      width: 40%;
+      width: 35%;
       float: left;
-      margin-left: 5%;
+      margin-left: 10%;
       margin-right: 5%; }
     /* line 51, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .imageHolder .rightSandal {
-      width: 40%;
+      width: 35%;
       float: left;
       margin-left: 5%;
-      margin-right: 5%; }
+      margin-right: 10%; }
     /* line 67, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .imageHolder .balanceScale {
       width: 80%;
@@ -89,7 +89,7 @@ body {
       background-color: #e8e8e8;
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px; } }
-  /* line 118, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+  /* line 119, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .footInfo {
     margin-bottom: 30px;
     width: 90%;
@@ -100,30 +100,38 @@ body {
     @media screen and (min-device-width: 1200px) {
       .content .infoHolder .footInfo {
         margin-top: 0px;
-        border-top-right-radius: 30px; } }
-    /* line 146, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+        border-top-right-radius: 30px;
+        margin-bottom: 0px; } }
+    /* line 131, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .footInfo .info {
+      background-color: #f0f0f0;
+      border-radius: 50px;
       width: 100%;
-      margin-top: 30px;
+      margin-top: 15px;
       float: left; }
       @media screen and (min-device-width: 1200px) {
         .content .infoHolder .footInfo .info {
           margin-top: 0px;
-          width: 50%; } }
-      /* line 154, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+          width: 50%;
+          background-color: transparent; } }
+      /* line 142, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .footInfo .info .footTitle {
         font-size: 8vw; }
         @media screen and (min-device-width: 1200px) {
           .content .infoHolder .footInfo .info .footTitle {
             font-size: 3vw; } }
-      /* line 160, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      /* line 148, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .footInfo .info .footContent {
         color: gray;
-        font-size: 9vw; }
+        font-size: 7vw; }
         @media screen and (min-device-width: 1200px) {
           .content .infoHolder .footInfo .info .footContent {
-            font-size: 4vw; } }
-  /* line 170, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+            font-size: 2.5vw; } }
+    @media screen and (min-device-width: 1200px) {
+      .content .infoHolder .footInfo .averageInfo {
+        margin-top: 10px;
+        width: 100%; } }
+  /* line 187, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
   .content .infoHolder .alertInfo {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
@@ -135,20 +143,20 @@ body {
       .content .infoHolder .alertInfo {
         border-bottom-right-radius: 30px;
         border-bottom-left-radius: 0px; } }
-    /* line 181, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 198, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .alertInfo .button {
       width: 25%;
       float: left;
       margin-left: 5%;
       margin-right: 5%; }
-      /* line 186, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+      /* line 203, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .alertInfo .button .actualButton {
         width: 80%;
         margin-left: 10%;
         margin-top: 10%;
         border-radius: 100%;
         background-color: #64c864; }
-    /* line 194, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
+    /* line 211, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
     .content .infoHolder .alertInfo .alertStatus {
       width: 60%;
       float: left;
