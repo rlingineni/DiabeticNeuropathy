@@ -1,3 +1,10 @@
+window.dataLF = "Loading";
+window.dataLB = "Loading";
+window.dataL = "Loading";
+window.dataRF = "Loading";
+window.dataRB = "Loading";
+window.dataR = "Loading";
+
 function fetchData(){
 	fetchLeft();
 	fetchRight();
@@ -6,13 +13,17 @@ function fetchData(){
 
 function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrLeft?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
-		window.dataL = data.result;
+		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
+			window.dataLF = data.result;
+		}
 	});
 }
 
 function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
 
-		window.dataR = data.result;
+		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
+			window.dataLB = data.result;
+		}
 	});
 }
 
@@ -25,31 +36,44 @@ function writeData(data){
 
 function dataDisplay(){
 
-	dataL = window.dataL;
-	dataR = window.dataR;
+	dataLF = window.dataLF;
+	dataLB = window.dataLB;
+	dataRF = 0;
+	dataRB = 0;
+	//dataRF = window.dataLF;
+	//dataRB = window.dataRB;
 
-	if (dataL != "undefined"){
-		$(".leftContent").text(dataL);
-		colorScale(".leftSandal", dataL, 200);
+	if (dataLF != "Loading"){
+		$(".leftContent").text("Front: " + dataLF + "lbs, " + $(".leftContent").text().split(", ")[1]);
 	}
 
-	if (dataR != "undefined"){
-		$(".rightContent").text(dataR);
-		colorScale(".rightSandal", dataR, 200);
+	if (dataLB != "Loading"){
+		$(".leftContent").text($(".leftContent").text().split(", ")[0] + ", " + "Back: " + dataLB + "lbs");
 	}
 
-	if (dataL != "undefined" && dataR != "undefined"){
-		balanceScale(dataL, dataR);
+	if (dataLF != "Loading" && dataLB != "Loading" && dataRF != "Loading" && dataRB != "Loading"){
+		bottomBalanceScale(dataLF + dataLB, dataRF + dataRB);
 		checkAlertStatus();
 	}
+
+	if (dataLF != "Loading" && dataLB != "Loading"){
+		colorScale(".leftSandal", dataLF, dataLB, 150);
+	}
+
+	load();
 }
 
 function checkAlertStatus(){
 
-	if (dataL + 15 < dataR || dataR + 15 < dataL){
+	if (dataLF > 0.4 * dataLB /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
-		$(".actualButton").css("background-color", "rgb(200, 100, 100)");
+		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
+		$( "#book" ).animate({
+			width: [ "toggle", "swing" ],
+			height: [ "toggle", "swing" ],
+			opacity: "toggle"
+		}, 5000, "linear");
 	}
 
 	else{
@@ -60,7 +84,8 @@ function checkAlertStatus(){
 
 }
 
-function balanceScale(){
+
+function bottomBalanceScale(dataL, dataR){
 	center = (($(".meter").parent().width() - $(".meter").width()) / 2);
 	if ((dataR - dataL) < 0){
 		balancePosition = 0 + center;
@@ -76,59 +101,68 @@ function balanceScale(){
 	$(".meter").css("margin-left", balancePosition + "px");
 }
 
-function colorScale(svgBaseClass, data, max){
-	red = (255 * data) / 100;
-	green = (200 * (100 - data)) / 100;
-	blue = 0;
+function colorScale(svgBaseClass, dataF, dataB, max){
+	redF = (255 * dataF) / 100;
+	greenF = (200 * (100 - dataF)) / 100;
+	blueF = 0;
 
-	red = parseInt(red);
-	green = parseInt(green);
-	blue = parseInt(blue);
+	redB = (255 * dataB) / 100;
+	greenB = (200 * (100 - dataB)) / 100;
+	blueB = 0;
 
-	if ((data / max) > 1){
-		opacity = 1;
+	redF = parseInt(redF);
+	greenF = parseInt(greenF);
+	blueF = parseInt(blueF);
+
+	redB = parseInt(redB);
+	greenB = parseInt(greenB);
+	blueB = parseInt(blueB);
+
+	if ((dataF / max) > 1){
+		opacityF = 1;
 	}
-	else if((data / max) < 0){
-		opacity = 0.5;
+	else if((dataF / max) < 0){
+		opacityF = 0.5;
 	}
 	else{
-		opacity = 0.5 + 0.5 * (data / max);
+		opacityF = 0.5 + 0.5 * (dataF / max);
 	}
 
-	//console.log(opacity);
-
-	redStrap = red * 1.05;
-	redOutside = red * 0.95;
-	greenStrap = green * 0.95;
-	greenOutside = green * 1.05;
-
-	if (green * 1.05 > 255){
-		greenOutside = 255;
+	if ((dataB / max) > 1){
+		opacityB = 1;
+	}
+	else if((dataB / max) < 0){
+		opacityB = 0.5;
+	}
+	else{
+		opacityB = 0.5 + 0.5 * (dataB / max);
 	}
 
-	if (red * 1.05 > 255){
-		redStrap = 255;
-	}
 
-	redStrap = parseInt(redStrap);
-	redOutside = parseInt(redOutside);
-	greenStrap = parseInt(greenStrap);
-	greenOutside = parseInt(greenOutside);
-
-	//console.log(red + "," + green + "," + blue);
+	redAvg = parseInt((redF + redB) / 2);
+	greenAvg = parseInt((greenF + greenB) / 2);
+	blueAvg = parseInt((blueF + blueB) / 2);
+	opacityAvg = parseFloat((opacityF + opacityB) / 2);
 
 	outsidePath = svgBaseClass + " .outsideShoe";
 	insidePath = svgBaseClass + " .insideShoe";
 	strapPath = svgBaseClass + " .strap";
+	frontPath = svgBaseClass + " .topSensor";
+	backPath = svgBaseClass + " .bottomSensor";
 
-	$(outsidePath).css("fill", "rgba(" + redOutside + "," + greenOutside + "," + blue + "," + opacity + ")");
-	$(insidePath).css("fill", "rgba(" + red + "," + green + "," + blue + "," + opacity + ")");
-	$(strapPath).css("fill", "rgba(" + redStrap + "," + greenStrap + "," + blue + "," + opacity + ")");
+
+	$(outsidePath).css("fill", "rgba(" + redAvg + "," + greenAvg + "," + blueAvg + "," + opacityAvg * .5 + ")");
+	$(insidePath).css("fill", "rgba(" + redAvg + "," + greenAvg + "," + blueAvg + "," + opacityAvg * 0.01 + ")");
+	$(frontPath).css("fill", "rgba(" + redF + "," + greenF + "," + blueF + "," + opacityF + ")");
+	$(backPath).css("fill", "rgba(" + redB + "," + greenB + "," + blueB + "," + opacityB + ")");
+
 	$(outsidePath).css("stroke-width", "0px");
 	$(insidePath).css("stroke-width", "0px");
 	$(strapPath).css("stroke-width", "0px");
+	$(frontPath).css("stroke-width", "0px");
+	$(backPath).css("stroke-width", "0px");
 }
 
-//setInterval(fetchData, 800);
+setInterval(fetchData, 800);
 
 

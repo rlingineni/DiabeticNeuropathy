@@ -1,4 +1,8 @@
 $(window).load(function() {
+	load();
+});
+
+function load(){
 	$(".actualButton").css("height", $(".actualButton").width() + "px");
 
 	$(".alertStatus").css("line-height", $(".button").height() + "px");
@@ -42,4 +46,4 @@ $(window).load(function() {
 
 	//$(".alertInfo").height($(".alertInfo").height() + 6);
 
-});
+}

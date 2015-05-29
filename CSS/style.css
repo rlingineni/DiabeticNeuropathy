@@ -123,10 +123,10 @@ body {
       /* line 148, /Users/CyrusRoshan/GitHub/Not Mine/Cooperation/DiabeticNeuropathy/CSS/style.scss */
       .content .infoHolder .footInfo .info .footContent {
         color: gray;
-        font-size: 7vw; }
+        font-size: 6vw; }
         @media screen and (min-device-width: 1200px) {
           .content .infoHolder .footInfo .info .footContent {
-            font-size: 2.5vw; } }
+            font-size: 2vw; } }
     @media screen and (min-device-width: 1200px) {
       .content .infoHolder .footInfo .averageInfo {
         margin-top: 10px;
