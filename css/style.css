@@ -198,7 +198,7 @@ body {
             float: left;
             display: block; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .leftFront {
-              background-color: rgba(232, 232, 232, 0.6);
+              background-color: #e8e8e8;
               width: 20px;
               height: 20px;
               border-radius: 100%; }
@@ -208,12 +208,12 @@ body {
               height: 20px;
               border-radius: 100%; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .leftBack {
-              background-color: rgba(59, 157, 255, 0.6);
+              background-color: #3b9dff;
               width: 20px;
               height: 20px;
               border-radius: 100%; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .rightBack {
-              background-color: rgba(59, 157, 255, 0);
+              background-color: cyan;
               width: 20px;
               height: 20px;
               border-radius: 100%; }

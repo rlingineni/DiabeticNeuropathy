@@ -8,7 +8,7 @@ window.dataR = "Loading";
 window.allDataLF = {};
 window.allDataLB = {};
 window.allDataRF = {};
-window.allDataLB = {};
+window.allDataRB = {};
 
 window.allDataLFCount = 0;
 window.allDataLBCount = 0;
@@ -25,26 +25,35 @@ window.lineChartData = {
 		  ['L Foot Front Current Pressure', 0],
 		  ['L Foot Back Current Pressure', 0]
 	]
-}
+};
 
 function fetchData(){
-	fetchLeft();
-	fetchRight();
+	fetchLeftFront();
+	fetchLeftBack();
+	fetchRightBack();
 	dataDisplay();
 }
 
-function fetchLeft(){    $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
-
-		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
-			window.dataLF = parseInt(data.result);
+function fetchLeftFront(){
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+		if (data.result !== NaN){
+			window.dataLF = data.result;
 		}
 	});
 }
 
-function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+function fetchLeftBack(){
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+		if (data.result !== NaN){
+			window.dataLB = data.result;
+		}
+	});
+}
 
-		if (data.result != "undefined" && data.result != undefined && data.result != "" || data.result == 0){
-			window.dataLB = parseInt(data.result);
+function fetchRightBack(){
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+		if (data.result !== NaN){
+			window.dataRB = data.result;
 		}
 	});
 }
@@ -66,7 +75,7 @@ function dataDisplay(){
 	dataLF = window.dataLF;
 	dataLB = window.dataLB;
 	dataRF = 0;
-	dataRB = 0;
+	dataRB = window.dataRB;
 	//dataRF = window.dataLF;
 	//dataRB = window.dataRB;
 
@@ -78,15 +87,33 @@ function dataDisplay(){
 		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + parseInt(dataLB * 59/1000) + " kPa");
 	}
 
+	if (dataRB != "Loading"){
+		$(".rightContent").html("Front: No Sensor" /*$(".rightContent").text().split(", ")[0]*/ + ", " + "<br>" + "Back: " + parseInt(dataRB * 59/1000) + " kPa");
+	}
+
+
+
 	if ((dataLF != "Loading" && dataLB != "Loading") || (dataRF != "Loading" && dataRB != "Loading")){
-		temp1 = dataLF + dataLB;
-		temp2 = dataRF + dataRB;
+		tempArray = [dataLF, dataLB, dataRF, dataRB]
+		for (i = 0; i < 4; i++){
+			if (tempArray[i] == "Loading"){
+				tempArray[i] = 0;
+			}
+		}
+
+		temp1 = tempArray[0] + tempArray[1];
+		temp2 = tempArray[2] + tempArray[3];
+
 		bottomBalanceScale(temp1 , temp2);
 		checkAlertStatus();
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
 		colorScale(".leftSandal", dataLF, dataLB, 250);
+	}
+
+	if (/*dataLF != "Loading" && */dataLB != "Loading"){
+		colorScale(".rightSandal", /*dataLF*/"Disabled", dataLB, 250);
 	}
 
 	if (dataLF != "Loading"){
@@ -112,6 +139,31 @@ function dataDisplay(){
 		}
 		dataLBAvg = dataLBAvg / allDataLBCount;
 		window.graphLeftBack = dataLBAvg;
+	}
+
+	if (dataRF != "Loading"){
+		allDataRFCount = allDataRFCount + 1;
+		allDataRF[allDataRFCount] = dataRF;
+		for (var i = 1; i < allDataRFCount; i++){
+			dataRFAvg = dataRFAvg + allDataRF[i];
+			window.lineChartData.columns[0].push(59/1000 * allDataRF[i]);
+		}
+		dataRFAvg = dataRFAvg / allDataRFCount;
+		window.graphLeftFront = dataRFAvg;
+
+	}
+
+	if (dataRB != "Loading"){
+		allDataRBCount = allDataRBCount + 1;
+		allDataRB[allDataRBCount] = dataRB;
+		for (var i = 1; i < allDataRBCount; i++){
+			dataRBAvg = dataRBAvg + allDataRB[i];
+			window.lineChartData.columns[1].push(59/1000 * allDataRB[i]);
+			//window.lineChartData[1].values.push({"time": i, "y": allDataLB[i]});
+			//window.lineChartData[1].values[i].y = allDataLB[i];
+		}
+		dataRBAvg = dataRBAvg / allDataRBCount;
+		window.graphRightBack = dataRBAvg;
 	}
 
 	/*
@@ -176,6 +228,11 @@ function bottomBalanceScale(dataL, dataR){
 }
 
 function colorScale(svgBaseClass, dataF, dataB, max){
+
+	if(svgBaseClass == ".rightSandal" && dataF == "Disabled"){
+		dataF = 0;
+	}
+
 	redF = (255 * dataF) / 100;
 	greenF = (200 * (100 - dataF)) / 100;
 	blueF = 0;
@@ -212,6 +269,24 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 		opacityB = 0.05 + 0.95 * (dataB / max);
 	}
 
+	/*
+	tempArray = [redF, greenF, blueF, opacityF, redB, greenB, blueB, opacityB]
+	for (i = 0; i < 8; i++){
+		if (tempArray[i] == NaN){
+			tempArray[i] = 0;
+		}
+	}
+	redF = tempArray[0];
+	greenF = tempArray[1];
+	blueF = tempArray[2];
+	opacityF = tempArray[3];
+	redB = tempArray[4];
+	greenB = tempArray[5];
+	blueB = tempArray[6];
+	opacityB = tempArray[7];
+	*/
+
+
 
 	redAvg = parseInt((redF + redB) / 2);
 	greenAvg = parseInt((greenF + greenB) / 2);
@@ -235,6 +310,8 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 	$(strapPath).css("stroke-width", "0px");
 	$(frontPath).css("stroke-width", "0px");
 	$(backPath).css("stroke-width", "0px");
+
+	$(".rightSandal .topSensor").css("fill", "rgba(0,0,0,0)");
 }
 
 setInterval(fetchData, 800);

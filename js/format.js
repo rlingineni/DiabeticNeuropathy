@@ -6,7 +6,16 @@ $(window).load(function() {
 });
 
 function load(){
+	//
+	//	Formatting stuff that applies to mobile too below
+	//
+
 	$(".actualButton").css("height", $(".actualButton").width() + "px");
+	$(".alertStatus").css("line-height", $(".button").height() + "px");
+
+	//
+	// Graph stuff below
+	//
 
 	$(".graphContent").css("height", $(".graphContent").width() + "px");
 
@@ -28,11 +37,17 @@ function load(){
 		width: $(".leftFront").parent().width() * window.graphLeftBack/ 200 + "px",
 		height: $(".leftFront").parent().width() * window.graphLeftBack / 200 + "px",
 	});
+	$(".rightBack").css({
+		width: $(".leftFront").parent().width() * window.graphRightBack/ 200 + "px",
+		height: $(".leftFront").parent().width() * window.graphRightBack / 200 + "px",
+	});
 
 	$(".graphKey").css("margin-top", ($(".graphContent").width() - $(".graphKey").height()) / 2 + "px");
 
 
-	$(".alertStatus").css("line-height", $(".button").height() + "px");
+	//
+	//	Formatting stuff below
+	//
 
 	//$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
 
