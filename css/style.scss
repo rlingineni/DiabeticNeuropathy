@@ -19,7 +19,13 @@ body{
 
 .content{
 	width: 90%;
+	margin-left: 0%;
 	padding: 5%;
+	@media screen and (min-device-width: 1200px) {
+		width: 70%;
+		margin-left: 12.5%;
+		padding: 2.5%;
+	}
 	background-color: rgb(75, 180, 255);
 
 	.imageHolder{
@@ -248,8 +254,10 @@ body{
 						}
 					}
 					.graphContent{
-						width: 70%;
+						width: 50%;
+						margin-left: 10%;
 						float: left;
+						margin-right: 5%;
 						.quad{
 							width: 50%;
 							float: left;
