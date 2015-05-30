@@ -20,6 +20,12 @@ window.dataLBAvg = 0;
 window.dataRFAvg = 0;
 window.dataRBAvg = 0;
 
+window.lineChartData = {
+	columns: [
+		  ['L Foot Front Current Pressure', 0],
+		  ['L Foot Back Current Pressure', 0]
+	]
+}
 
 function fetchData(){
 	fetchLeft();
@@ -43,6 +49,11 @@ function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff710
 	});
 }
 
+function pageScroll() {
+    window.scrollBy(0,1);
+    scrolldelay = setTimeout(pageScroll(),10);
+}
+
 function writeData(data){
 	dataL = window.dataL;
 	dataR = window.dataR;
@@ -60,20 +71,22 @@ function dataDisplay(){
 	//dataRB = window.dataRB;
 
 	if (dataLF != "Loading"){
-		$(".leftContent").html("Front: " + dataLF * 1940 + " Pa, " + "<br>" + $(".leftContent").text().split(", ")[1]);
+		$(".leftContent").html("Front: " + parseInt(dataLF * 59/1000) + " kPa, " + "<br>" + $(".leftContent").text().split(", ")[1]);
 	}
 
 	if (dataLB != "Loading"){
-		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + dataLB * 1940 + " Pa");
+		$(".leftContent").html($(".leftContent").text().split(", ")[0] + ", " + "<br>" + "Back: " + parseInt(dataLB * 59/1000) + " kPa");
 	}
 
 	if ((dataLF != "Loading" && dataLB != "Loading") || (dataRF != "Loading" && dataRB != "Loading")){
-		bottomBalanceScale(dataLF + dataLB, dataRF + dataRB);
+		temp1 = dataLF + dataLB;
+		temp2 = dataRF + dataRB;
+		bottomBalanceScale(temp1 , temp2);
 		checkAlertStatus();
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
-		colorScale(".leftSandal", dataLF, dataLB, 150);
+		colorScale(".leftSandal", dataLF, dataLB, 250);
 	}
 
 	if (dataLF != "Loading"){
@@ -81,10 +94,10 @@ function dataDisplay(){
 		allDataLF[allDataLFCount] = dataLF;
 		for (var i = 1; i < allDataLFCount; i++){
 			dataLFAvg = dataLFAvg + allDataLF[i];
+			window.lineChartData.columns[0].push(59/1000 * allDataLF[i]);
 		}
 		dataLFAvg = dataLFAvg / allDataLFCount;
 
-		//put converting function here
 	}
 
 	if (dataLB != "Loading"){
@@ -92,13 +105,22 @@ function dataDisplay(){
 		allDataLB[allDataLBCount] = dataLB;
 		for (var i = 1; i < allDataLBCount; i++){
 			dataLBAvg = dataLBAvg + allDataLB[i];
+			window.lineChartData.columns[1].push(59/1000 * allDataLB[i]);
+			//window.lineChartData[1].values.push({"time": i, "y": allDataLB[i]});
+			//window.lineChartData[1].values[i].y = allDataLB[i];
 		}
 		dataLBAvg = dataLBAvg / allDataLBCount;
-
-		//put converting function here
 	}
 
-	$(".averageContent").html("L Front: " + parseInt((dataLFAvg * 1940/*).toExponential(2*/)) + " Pa" + "<br>" + "L Back: " + parseInt((dataLBAvg * 1940/*).toExponential(2*/)) + " Pa" );
+	/*
+	Include this if you want a graph:
+	var chart = c3.generate({
+		bindto: '#graphA',
+			data: window.lineChartData
+	});
+
+	*/
+	$(".averageContent").html("L Front: " + parseInt((dataLFAvg * 59/*).toExponential(2*/)) + " Pa," + "<br>" + "L Back: " + parseInt((dataLBAvg * 59 /*).toExponential(2*/)) + " Pa" );
 
 	load();
 }
@@ -137,14 +159,14 @@ function bottomBalanceScale(dataL, dataR){
 	if (dataR == "Loading"){
 		dataR = 0;
 	}
-	if ((dataR - dataL) < -150){
+	if ((dataR - dataL) < -250){
 		balancePosition = 0 * center;
 	}
-	else if ((dataR - dataL) > 150){
+	else if ((dataR - dataL) > 250){
 		balancePosition = 2 * center;
 	}
 	else{
-		balancePosition = (dataR - dataL)/150 * center + center;
+		balancePosition = (dataR - dataL)/250 * center + center;
 	}
 
 

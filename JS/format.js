@@ -1,4 +1,7 @@
 $(window).load(function() {
+	$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
+
+
 	load();
 });
 
@@ -7,7 +10,7 @@ function load(){
 
 	$(".alertStatus").css("line-height", $(".button").height() + "px");
 
-	$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
+	//$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
 
 
 	if (screen.width > 1200){
@@ -15,7 +18,7 @@ function load(){
 		$(".imageHolder").outerHeight($(".infoHolder").outerHeight());
 
 		leftHeight = $(".imageHolder").height();
-		$(".balanceScale").css("margin-top", "7%");
+		$(".balanceScale").css("margin-top", "15%");
 		$(".balanceScale").height(leftHeight * 0.09);
 		$(".meter").css({
 			width: leftHeight * 0.09 * 1.5,
@@ -24,7 +27,7 @@ function load(){
 		});
 
 
-		$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
+		//$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
 
 
 		/* This stuff was for when the right side was smaller than the left side on desktop.

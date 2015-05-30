@@ -4,9 +4,13 @@
 		<title>Visual Sensor Status</title>
 		<link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
+		<link href="css/c3.min.css" rel='stylesheet' type='text/css' />
 		<script src="js/jquery-2.1.4.min.js"></script>
 		<script src="js/jquery.color.js"></script>
+		<script src="js/d3.min.js"></script>
+		<script src="js/c3.min.js"></script>
 		<script src="js/data.js"></script>
+		<!--<script src="js/chartConfig.js"></script>-->
 		<script src="js/format.js"></script>
 	</head>
 	<body>
@@ -64,31 +68,44 @@
 			</div>
 				<div class="infoHolder">
 					<div class="footInfo">
-						<div class="info leftInfo">
-							<div class="footTitle leftTitle">
-								Left Foot Pressure:
+						<div class="row topRow">
+							<div class="info leftInfo">
+								<div class="footTitle leftTitle">
+									Left Foot Pressure:
+								</div>
+								<div class="footContent leftContent">
+									Loading...
+								</div>
 							</div>
-							<div class="footContent leftContent">
-								Loading...
-							</div>
-						</div>
-						<div class="info rightInfo">
-							<div class="footTitle rightTitle">
-								Right Foot Pressure:
-							</div>
-							<div class="footContent rightContent">
-								Sensor Deactivated
-							</div>
-						</div>
-						<div class="info averageInfo">
-							<div class="footTitle averageTitle">
-								Average:
-							</div>
-							<div class="footContent averageContent">
-								Loading...
+							<div class="info rightInfo">
+								<div class="footTitle rightTitle">
+									Right Foot Pressure:
+								</div>
+								<div class="footContent rightContent">
+									Sensor Deactivated
+								</div>
 							</div>
 						</div>
-					  </div>
+						<div class="row bottomRow">
+							<div class="info currentGraph">
+								<div class="graphTitle currentTitle">
+
+								</div>
+								<div id="graphA" class="graphContent currentGraph epoch category10">
+
+								</div>
+							</div>
+							<div class="info avgGraph">
+								<div class="graphTitle avgTitle">
+
+								</div>
+								<div class="graphContent avgGraph epoch category10">
+
+								</div>
+							</div>
+						</div>
+
+					</div>
 					<div class="alertInfo">
 						<!--<img class="button" id="button" src="Images/button.svg">-->
 						<div class="button">
