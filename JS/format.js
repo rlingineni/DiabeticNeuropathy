@@ -42,7 +42,7 @@ function load(){
 		$(".imageHolder").outerHeight($(".infoHolder").outerHeight());
 
 		leftHeight = $(".imageHolder").height();
-		$(".balanceScale").css("margin-top", "25%");
+		$(".balanceScale").css("margin-top", "12%");
 		$(".balanceScale").height(leftHeight * 0.05);
 		$(".meter").css({
 			width: leftHeight * 0.05 * 1.5,
@@ -50,6 +50,7 @@ function load(){
 			top: leftHeight * 0.05 * -0.25,
 		});
 
+		//$(".deskTopOnly").css("margin-top", ($(".deskTopOnly").parent().height() - $(".leftSandal").height() - $(".balanceScale").height())/2);
 
 		//$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
 

@@ -4,6 +4,11 @@ html{
 	background-color: rgb(75, 180, 255);
 }
 
+a{
+	text-decoration: none;
+	color: rgb(75, 180, 255);
+}
+
 body{
 	width: 100%;
 	height: 100%;
@@ -113,6 +118,18 @@ body{
 				background-color: #175581;
 			}
 		}
+
+		.desktopOnly{
+			display: none;
+			@media screen and (min-device-width: 1200px) {
+				display: inline-block;
+				margin-top: 10%;
+			}
+			.info{
+				text-align: center;
+				font-size: 3vw;
+			}
+		}
 	}
 
 	.infoHolder{
@@ -123,13 +140,47 @@ body{
 			border-top-right-radius: 30px;
 			border-bottom-right-radius: 30px;
 		}
-
-		.footInfo{
+		.alertInfo{
 			margin-bottom: 20px;
 			@media screen and (min-device-width: 1200px) {
 				margin-top: 0px;
 				border-top-right-radius: 30px;
 				margin-bottom: 0px;
+			}
+			background-color: rgb(228, 253, 238);
+			width: 90%;
+			display: inline-block;
+			padding: 5%;
+			.button{
+				width: 25%;
+				float: left;
+				margin-left: 5%;
+				margin-right: 5%;
+				.actualButton{
+					width: 80%;
+					margin-left: 10%;
+					margin-top: 10%;
+					border-radius: 100%;
+					background-color: rgb(100, 200, 100);
+				}
+			}
+			.alertStatus{
+				width: 60%;
+				float: left;
+				font-size: 12vw;
+				text-align: center;
+				@media screen and (min-device-width: 1200px) {
+					font-size: 5vw;
+				}
+			}
+		}
+
+		.footInfo{
+			border-bottom-left-radius: 40px;
+			border-bottom-right-radius: 40px;
+			@media screen and (min-device-width: 1200px) {
+				border-bottom-right-radius: 30px;
+				border-bottom-left-radius: 0px;
 			}
 			width: 90%;
 			padding: 5%;
@@ -264,40 +315,7 @@ body{
 			}
 		}
 
-		.alertInfo{
-			border-bottom-left-radius: 40px;
-			border-bottom-right-radius: 40px;
-			@media screen and (min-device-width: 1200px) {
-				border-bottom-right-radius: 30px;
-				border-bottom-left-radius: 0px;
-			}
-			background-color: rgb(228, 253, 238);
-			width: 90%;
-			display: inline-block;
-			padding: 5%;
-			.button{
-				width: 25%;
-				float: left;
-				margin-left: 5%;
-				margin-right: 5%;
-				.actualButton{
-					width: 80%;
-					margin-left: 10%;
-					margin-top: 10%;
-					border-radius: 100%;
-					background-color: rgb(100, 200, 100);
-				}
-			}
-			.alertStatus{
-				width: 60%;
-				float: left;
-				font-size: 12vw;
-				text-align: center;
-				@media screen and (min-device-width: 1200px) {
-					font-size: 5vw;
-				}
-			}
-		}
+
 	}
 
 
