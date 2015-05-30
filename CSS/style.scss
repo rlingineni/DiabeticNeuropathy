@@ -185,6 +185,70 @@ body{
 
 					}
 				}
+				.graph{
+					background-color: #b4b4b4;
+					border-radius: 30px;
+					width: 100%;
+					float: left;
+					.graphTitle{
+						font-size: 6vw;
+						@media screen and (min-device-width: 1200px){
+							font-size: 3vw;
+						}
+					}
+					.graphContent{
+						width: 70%;
+						float: left;
+						.quad{
+							width: 50%;
+							float: left;
+							display: block;
+							.leftFront{
+								background-color: rgba(232, 232, 232, 0.6);
+								width:20px;
+								height: 20px;
+								border-radius: 100%;
+							}
+							.rightFront{
+								background-color: rgba(232, 232, 232, 0);
+								width:20px;
+								height: 20px;
+								border-radius: 100%;
+							}
+							.leftBack{
+								background-color: rgba(59, 157, 255, 0.6);
+								width: 20px;
+								height: 20px;
+								border-radius: 100%;
+							}
+							.rightBack{
+								background-color: rgba(59, 157, 255, 0);
+								width: 20px;
+								height: 20px;
+								border-radius: 100%;
+							}
+						}
+					}
+					.graphKey{
+						width: 30%;
+						float: left;
+						font-size: 4vw;
+						@media screen and (min-device-width: 1200px){
+							font-size: 1.5vw;
+						}
+						.keyTitle{
+							font-size: 5vw;
+							display: inline;
+							@media screen and (min-device-width: 1200px){
+								font-size: 2vw;
+							}
+						}
+						.keyColor{
+							display: inline;
+							width: 10%;
+						}
+					}
+				}
 				.averageInfo{
 					@media screen and (min-device-width: 1200px) {
 						margin-top: 10px;

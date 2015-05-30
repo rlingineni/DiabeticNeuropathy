@@ -8,6 +8,30 @@ $(window).load(function() {
 function load(){
 	$(".actualButton").css("height", $(".actualButton").width() + "px");
 
+	$(".graphContent").css("height", $(".graphContent").width() + "px");
+
+	$(".graphBox").css("width", $(".graphBox").parent().width() / 2 + "px");
+	$(".graphBox").css("height", $(".graphBox").parent().width() / 2 + "px");
+
+	$(".quad").css("height", $(".quad").parent().height()/2 + "px");
+
+	$('.circle').each(function(i, obj) {
+		$(this).css("margin-top", ($(this).parent().width() - $(this).height()) / 2 + "px");
+		$(this).css("margin-left", ($(this).parent().width() - $(this).height()) / 2 + "px");
+	});
+
+	$(".leftFront").css({
+		width: $(".leftFront").parent().width() * window.graphLeftFront / 200 + "px",
+		height: $(".leftFront").parent().width() * window.graphLeftFront / 200 + "px",
+	});
+	$(".leftBack").css({
+		width: $(".leftFront").parent().width() * window.graphLeftBack/ 200 + "px",
+		height: $(".leftFront").parent().width() * window.graphLeftBack / 200 + "px",
+	});
+
+	$(".graphKey").css("margin-top", ($(".graphContent").width() - $(".graphKey").height()) / 2 + "px");
+
+
 	$(".alertStatus").css("line-height", $(".button").height() + "px");
 
 	//$(".meter").css("margin-left", ($(".meter").parent().width() - $(".meter").width()) / 2 + "px");
@@ -18,12 +42,12 @@ function load(){
 		$(".imageHolder").outerHeight($(".infoHolder").outerHeight());
 
 		leftHeight = $(".imageHolder").height();
-		$(".balanceScale").css("margin-top", "15%");
-		$(".balanceScale").height(leftHeight * 0.09);
+		$(".balanceScale").css("margin-top", "25%");
+		$(".balanceScale").height(leftHeight * 0.05);
 		$(".meter").css({
-			width: leftHeight * 0.09 * 1.5,
-			height: leftHeight * 0.09 * 1.5,
-			top: leftHeight * 0.09 * -0.25,
+			width: leftHeight * 0.05 * 1.5,
+			height: leftHeight * 0.05 * 1.5,
+			top: leftHeight * 0.05 * -0.25,
 		});
 
 

@@ -50,8 +50,8 @@ function fetchRight(){     $.getJSON("https://api.particle.io/v1/devices/54ff710
 }
 
 function pageScroll() {
-    window.scrollBy(0,1);
-    scrolldelay = setTimeout(pageScroll(),10);
+	window.scrollBy(0,1);
+	scrolldelay = setTimeout(pageScroll(),10);
 }
 
 function writeData(data){
@@ -97,6 +97,7 @@ function dataDisplay(){
 			window.lineChartData.columns[0].push(59/1000 * allDataLF[i]);
 		}
 		dataLFAvg = dataLFAvg / allDataLFCount;
+		window.graphLeftFront = dataLFAvg;
 
 	}
 
@@ -110,6 +111,7 @@ function dataDisplay(){
 			//window.lineChartData[1].values[i].y = allDataLB[i];
 		}
 		dataLBAvg = dataLBAvg / allDataLBCount;
+		window.graphLeftBack = dataLBAvg;
 	}
 
 	/*
