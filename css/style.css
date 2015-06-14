@@ -199,23 +199,23 @@ body {
             display: block; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .leftFront {
               background-color: #e8e8e8;
-              width: 20px;
-              height: 20px;
+              width: 0px;
+              height: 0px;
               border-radius: 100%; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .rightFront {
               background-color: rgba(232, 232, 232, 0);
-              width: 20px;
-              height: 20px;
+              width: 0px;
+              height: 0px;
               border-radius: 100%; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .leftBack {
               background-color: #3b9dff;
-              width: 20px;
-              height: 20px;
+              width: 0px;
+              height: 0px;
               border-radius: 100%; }
             .content .infoHolder .footInfo .row .graph .graphContent .quad .rightBack {
               background-color: cyan;
-              width: 20px;
-              height: 20px;
+              width: 0px;
+              height: 0px;
               border-radius: 100%; }
         .content .infoHolder .footInfo .row .graph .graphKey {
           width: 30%;
