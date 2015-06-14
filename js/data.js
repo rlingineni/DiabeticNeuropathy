@@ -27,6 +27,80 @@ window.lineChartData = {
 	]
 };
 
+window.a = 21;
+window.b = 150;
+window.c = 41;
+window.d = 150;
+window.e = 41;
+window.f = 150;
+window.dataLF = 21;
+window.dataLB = 41;
+window.dataRB = 41;
+
+function demoSetup(){
+	dataDisplay();
+}
+
+function demo(){
+
+	//front Left
+
+	if(window.a < 150){
+		window.dataLF = window.a;
+		window.a = window.a + 1;
+		setTimeout(demo, 20);
+	}
+	if(window.a == 150){
+		if(window.b >= 21){
+			window.dataLF = window.b;
+			window.b = window.b - 1;
+			setTimeout(demo, 20);
+		}
+	}
+
+	//back Left
+
+	if(window.b == 20){
+		if(window.c < 150){
+			window.dataLB = window.c;
+			window.c = window.c + 1;
+			setTimeout(demo, 20);
+		}
+	}
+	if(window.c == 150){
+		if(window.d >= 41){
+			window.dataLB = window.d;
+			window.d = window.d - 1;
+			setTimeout(demo, 20);
+		}
+	}
+
+	//back Right
+
+	if(window.d == 40){
+		if(window.e < 150){
+			window.dataRB = window.e;
+			window.e = window.e + 1;
+			setTimeout(demo, 20);
+		}
+	}
+	if(window.e == 150){
+		if(window.f >= 41){
+			window.dataRB = window.f;
+			window.f = window.f - 1;
+			setTimeout(demo, 20);
+		}
+	}
+
+	if(window.f == 40){
+		setTimeout(demo, 20);
+	}
+
+	console.log(window.a + ", " + window.b + ", " + window.c + ", " + window.d + ", " + window.e + ", " + window.f);
+	dataDisplay();
+}
+
+
 function fetchData(){
 	fetchLeftFront();
 	fetchLeftBack();
@@ -113,18 +187,22 @@ function dataDisplay(){
 	}
 
 	if (/*dataLF != "Loading" && */dataLB != "Loading"){
-		colorScale(".rightSandal", /*dataLF*/"Disabled", dataLB, 250);
+		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB, 250);
 	}
 
 	if (dataLF != "Loading"){
-		allDataLFCount = allDataLFCount + 1;
-		allDataLF[allDataLFCount] = dataLF;
-		for (var i = 1; i < allDataLFCount; i++){
-			dataLFAvg = dataLFAvg + allDataLF[i];
-			window.lineChartData.columns[0].push(59/1000 * allDataLF[i]);
+		window.allDataLFCount = window.allDataLFCount + 1;
+		window.allDataLF[window.allDataLFCount] = window.dataLF;
+		for (var i = 1; i < window.allDataLFCount; i++){
+			window.dataLFAvg = window.dataLFAvg + window.allDataLF[i];
+			window.lineChartData.columns[0].push(59/1000 * window.allDataLF[i]);
 		}
-		dataLFAvg = dataLFAvg / allDataLFCount;
-		window.graphLeftFront = dataLFAvg;
+
+		function lf1(){window.dataLFAvg = window.dataLFAvg / window.allDataLFCount;}
+		function lf2(){window.graphLeftFront = window.dataLFAvg;}
+		lf1();
+		lf2();
+
 
 	}
 
@@ -137,8 +215,10 @@ function dataDisplay(){
 			//window.lineChartData[1].values.push({"time": i, "y": allDataLB[i]});
 			//window.lineChartData[1].values[i].y = allDataLB[i];
 		}
-		dataLBAvg = dataLBAvg / allDataLBCount;
-		window.graphLeftBack = dataLBAvg;
+		function lb1(){dataLBAvg = dataLBAvg / allDataLBCount;}
+		function lb2(){window.graphLeftBack = dataLBAvg;}
+		lb1();
+		lb2();
 	}
 
 	if (dataRF != "Loading"){
@@ -148,8 +228,10 @@ function dataDisplay(){
 			dataRFAvg = dataRFAvg + allDataRF[i];
 			window.lineChartData.columns[0].push(59/1000 * allDataRF[i]);
 		}
-		dataRFAvg = dataRFAvg / allDataRFCount;
-		window.graphLeftFront = dataRFAvg;
+		function rf1(){dataRFAvg = dataRFAvg / allDataRFCount;}
+		function rf2(){window.graphRightFront = dataRFAvg;}
+		rf1();
+		rf2();
 
 	}
 
@@ -162,8 +244,10 @@ function dataDisplay(){
 			//window.lineChartData[1].values.push({"time": i, "y": allDataLB[i]});
 			//window.lineChartData[1].values[i].y = allDataLB[i];
 		}
-		dataRBAvg = dataRBAvg / allDataRBCount;
-		window.graphRightBack = dataRBAvg;
+		function rb1(){dataRBAvg = dataRBAvg / allDataRBCount;}
+		function rb2(){window.graphRightBack = dataRBAvg;}
+		rb1();
+		rb2();
 	}
 
 	/*
@@ -181,22 +265,23 @@ function dataDisplay(){
 
 function checkAlertStatus(){
 
-	if (dataLF > dataLB * .7 && dataLB > 40 /*|| dataLF + 15 > dataLB*/){
+	if ( (dataLF > dataLB * 0.7) && (dataLB > 40) /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
 		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
 		$(".actualButton").animate({
 				backgroundColor: "rgb(255, 155, 155)"
-			}, 200, "linear", function() {
+			}, 100, "linear", function() {
 				$(".actualButton").animate({
 						backgroundColor: "rgb(255, 0, 0)"
-					}, 200, "linear"
+					}, 100, "linear"
 				);
 			}
 		);
 	}
 
 	else{
+		$(".actualButton").finish();
 		$(".alertInfo").css("background-color", "rgb(228, 253, 238)");
 		$(".alertStatus").text("No Alert");
 		$(".actualButton").css("background-color", "rgb(100, 200, 100)");
@@ -314,6 +399,6 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 	$(".rightSandal .topSensor").css("fill", "rgba(0,0,0,0)");
 }
 
-setInterval(fetchData, 800);
+//setInterval(fetchData, 800);
 
 
