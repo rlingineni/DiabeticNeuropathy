@@ -4,7 +4,7 @@ A project created during the 2015 PACT Healthcare App Challenge.
 
 ---
 
-Diabetic Neuropathy is a condition often found in diabetic patients. Patients suffering from neuropathy often lose sensation within their feet, and lower legs. This means that these patients are unaware of what they might be stepping on, and unaware of the amount of pressure they apply to each foot. This leads to more complications such as blisters and ulcers.
+Diabetic Neuropathy is a condition often found in diabetic patients. Nearly 60-70 percent of diabetic patients suffer from neuropathy. Patients suffering from neuropathy often lose sensation within their feet, and lower legs. This means that these patients are unaware of what they might be stepping on, and unaware of the amount of pressure they apply to each foot. This leads to more complications such as blisters and ulcers.
 
 Our project aims to aid patients lessen the severe effects of DN (Diabetic Neuropathy) and improve the healing process for those with complications caused by DN (i.e. ulcers, blisters, abrasions). Our project does this by collecting real-time foot pressure data on various parts of the feet and offering haptic feedback to help a patient orient his weight differently to prevent  excessive pressure at any points. This approach will reduce the number of foot ulcers a DN patient may develop, in addition to helping the healing process.
 
