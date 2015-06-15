@@ -399,6 +399,6 @@ function colorScale(svgBaseClass, dataF, dataB, max){
 	$(".rightSandal .topSensor").css("fill", "rgba(0,0,0,0)");
 }
 
-//setInterval(fetchData, 800);
+setInterval(fetchData, 800);
 
 
