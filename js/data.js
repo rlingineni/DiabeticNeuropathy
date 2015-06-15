@@ -27,6 +27,7 @@ window.lineChartData = {
 	]
 };
 
+/*
 window.a = 21;
 window.b = 150;
 window.c = 41;
@@ -36,7 +37,7 @@ window.f = 150;
 window.dataLF = 21;
 window.dataLB = 41;
 window.dataRB = 41;
-
+*/
 function demoSetup(){
 	dataDisplay();
 }
