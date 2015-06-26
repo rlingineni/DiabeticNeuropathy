@@ -184,11 +184,11 @@ function dataDisplay(){
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
-		colorScale(".leftSandal", dataLF - 2, dataLB, 250);
+		colorScale(".leftSandal", dataLF * 2 - 2, dataLB, 250);
 	}
 
 	if (/*dataLF != "Loading" && */dataLB != "Loading"){
-		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB + 6, 250);
+		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB * 2 + 6, 250);
 	}
 
 	if (dataLF != "Loading"){
