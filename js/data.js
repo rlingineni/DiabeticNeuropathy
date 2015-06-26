@@ -266,7 +266,7 @@ function dataDisplay(){
 
 function checkAlertStatus(){
 
-	if ( (dataLF > dataLB * 0.7) && (dataLB > 2) /*|| dataLF + 15 > dataLB*/){
+	if ( (dataLF > dataLB * 0.7) && (dataLB > 30) /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
 		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
