@@ -184,11 +184,11 @@ function dataDisplay(){
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
-		colorScale(".leftSandal", dataLF, dataLB, 250);
+		colorScale(".leftSandal", dataLF - 2, dataLB, 250);
 	}
 
 	if (/*dataLF != "Loading" && */dataLB != "Loading"){
-		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB, 250);
+		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB + 6, 250);
 	}
 
 	if (dataLF != "Loading"){
@@ -314,6 +314,14 @@ function bottomBalanceScale(dataL, dataR){
 }
 
 function colorScale(svgBaseClass, dataF, dataB, max){
+
+	if(dataF < 0){
+		dataF = 0;
+	}
+
+	if(dataB < 0){
+		dataB = 0;
+	}
 
 	if(svgBaseClass == ".rightSandal" && dataF == "Disabled"){
 		dataF = 0;
