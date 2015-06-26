@@ -110,7 +110,7 @@ function fetchData(){
 }
 
 function fetchLeftFront(){
-	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
 			window.dataLF = data.result;
 		}
@@ -118,7 +118,7 @@ function fetchLeftFront(){
 }
 
 function fetchLeftBack(){
-	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
 			window.dataLB = data.result;
 		}
@@ -126,7 +126,7 @@ function fetchLeftBack(){
 }
 
 function fetchRightBack(){
-	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=eef5a0cba3f7e74a20df3a6d9b49229ce8b54fc7", function(data) {
+	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
 			window.dataRB = data.result;
 		}
