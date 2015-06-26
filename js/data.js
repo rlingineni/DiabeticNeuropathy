@@ -112,7 +112,7 @@ function fetchData(){
 function fetchLeftFront(){
 	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
-			window.dataLF = data.result * 2 - 2;
+			window.dataLF = data.result * 2;
 		}
 	});
 }
@@ -266,7 +266,7 @@ function dataDisplay(){
 
 function checkAlertStatus(){
 
-	if ( (dataLF > dataLB * 0.7) && (dataLB > 40) /*|| dataLF + 15 > dataLB*/){
+	if ( (dataLF > dataLB * 0.7) && (dataLB > 2) /*|| dataLF + 15 > dataLB*/){
 		$(".alertInfo").css("background-color", "rgb(253, 228, 238)");
 		$(".alertStatus").text("Alert!");
 		//$(".actualButton").css("background-color", "rgb(200, 100, 100)");
