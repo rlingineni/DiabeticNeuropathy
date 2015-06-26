@@ -112,7 +112,7 @@ function fetchData(){
 function fetchLeftFront(){
 	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrFront?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
-			window.dataLF = data.result;
+			window.dataLF = data.result * 2 - 2;
 		}
 	});
 }
@@ -120,7 +120,7 @@ function fetchLeftFront(){
 function fetchLeftBack(){
 	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrBack?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
-			window.dataLB = data.result;
+			window.dataLB = data.result * 2;
 		}
 	});
 }
@@ -128,7 +128,7 @@ function fetchLeftBack(){
 function fetchRightBack(){
 	$.getJSON("https://api.particle.io/v1/devices/54ff71066672524822431867/fsrRight?access_token=9d50c1974fcd10ee28054c9d2e663ed76016997f", function(data) {
 		if (data.result !== NaN){
-			window.dataRB = data.result;
+			window.dataRB = data.result * 2 + 6;
 		}
 	});
 }
@@ -147,10 +147,10 @@ function writeData(data){
 
 function dataDisplay(){
 
-	dataLF = window.dataLF * 2 - 2,;
-	dataLB = window.dataLB * 2;
+	dataLF = window.dataLF;
+	dataLB = window.dataLB;
 	dataRF = 0;
-	dataRB = window.dataRB * 2 + 6;
+	dataRB = window.dataRB;
 	//dataRF = window.dataLF;
 	//dataRB = window.dataRB;
 
@@ -184,7 +184,7 @@ function dataDisplay(){
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
-		colorScale(".leftSandal", dataLF dataLB, 250);
+		colorScale(".leftSandal", dataLF, dataLB, 250);
 	}
 
 	if (/*dataLF != "Loading" && */dataLB != "Loading"){
