@@ -147,10 +147,10 @@ function writeData(data){
 
 function dataDisplay(){
 
-	dataLF = window.dataLF;
-	dataLB = window.dataLB;
+	dataLF = window.dataLF * 2 - 2,;
+	dataLB = window.dataLB * 2;
 	dataRF = 0;
-	dataRB = window.dataRB;
+	dataRB = window.dataRB * 2 + 6;
 	//dataRF = window.dataLF;
 	//dataRB = window.dataRB;
 
@@ -184,11 +184,11 @@ function dataDisplay(){
 	}
 
 	if (dataLF != "Loading" && dataLB != "Loading"){
-		colorScale(".leftSandal", dataLF * 2 - 2, dataLB, 250);
+		colorScale(".leftSandal", dataLF dataLB, 250);
 	}
 
 	if (/*dataLF != "Loading" && */dataLB != "Loading"){
-		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB * 2 + 6, 250);
+		colorScale(".rightSandal", /*dataLF*/"Disabled", dataRB, 250);
 	}
 
 	if (dataLF != "Loading"){
